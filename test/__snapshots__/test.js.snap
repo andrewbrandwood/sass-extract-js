@@ -1,5 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`sass-extract-js options plugin instance with hex options should convert color values to Hex 1`] = `
+Object {
+  "myOtherVAr": "#000000",
+  "myVar": "#000000",
+  "valueMap": Object {
+    "myVar4": "#000000",
+    "myVar5": "#000000",
+  },
+}
+`;
+
 exports[`sass-extract-js options plugin instance with options should NOT convert keys to camelCase 1`] = `
 Object {
   "MY-VAR": "500px",

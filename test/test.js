@@ -8,6 +8,7 @@ const testfiles = {
   sassOpts: path.resolve(__dirname, './sass/test-opts-sass.scss'),
   import: path.resolve(__dirname, './sass/test-import.scss'),
   empty: path.resolve(__dirname, './sass/test-empty.scss'),
+  hex: path.resolve(__dirname, './sass/test-opts-hex.scss')
 };
 
 const getVars = (file, compileOpts = {}, plugin) => sassExtract.renderSync(
@@ -29,6 +30,7 @@ describe('sass-extract-js', () => {
   });
 
   it('should handle file with no variables', () => {
+
     expect(getVars(testfiles.empty)).toMatchSnapshot();
   });
 
@@ -66,5 +68,17 @@ describe('sass-extract-js', () => {
       };
       shouldNotConvert(inst);
     });
+
+    const shouldConvertToHex = pluginInst => (
+      it('should convert color values to Hex', () => {
+        expect(getVars(testfiles.hex, null, pluginInst)).toMatchSnapshot();
+      })
+    );
+
+    describe('plugin instance with hex options', () => {
+      const inst = createPlugin({ hex: true });
+      shouldConvertToHex(inst);
+    });
+
   });
 });
