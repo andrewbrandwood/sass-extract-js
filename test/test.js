@@ -30,7 +30,6 @@ describe('sass-extract-js', () => {
   });
 
   it('should handle file with no variables', () => {
-
     expect(getVars(testfiles.empty)).toMatchSnapshot();
   });
 
